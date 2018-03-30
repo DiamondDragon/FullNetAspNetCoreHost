@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
@@ -17,8 +18,8 @@ namespace ConsoleHostApp
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseUrls("http://localhost:5000")
-                .UseContentRoot(@"d:\Test\AspNetCoreFrameworkPoC\ConsoleHostApp")
-                .UseWebRoot(@"d:\Test\AspNetCoreFrameworkPoC\ConsoleHostApp\wwwroot")
+                .UseContentRoot(Path.GetFullPath(@"..\..\."))
+                .UseWebRoot(Path.GetFullPath(@"..\..\wwwroot"))
                 .Build();
     }
 }
