@@ -22,26 +22,7 @@ namespace ConsoleHostApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .AddRazorOptions(options =>
-                {
-                    var assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
-
-                    assemblies.Add(typeof(Microsoft.CSharp.RuntimeBinder.Binder).Assembly);
-                    assemblies.Add(typeof(HtmlAttributeValueStyle).Assembly);
-                    assemblies.Add(typeof(HtmlString).Assembly);
-
-
-                    var refs = assemblies
-                        .Where(x => !x.IsDynamic && !string.IsNullOrWhiteSpace(x.Location))
-                        .Select(x => MetadataReference.CreateFromFile(x.Location))
-                        .ToList();
-                    foreach (var portableExecutableReference in refs)
-                    {
-                        options.AdditionalCompilationReferences.Add(portableExecutableReference);
-                    }
-
-                });
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
