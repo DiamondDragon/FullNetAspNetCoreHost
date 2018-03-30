@@ -18,8 +18,6 @@ namespace ConsoleHostApp
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseUrls("http://localhost:5000")
-                .UseContentRoot(Path.GetFullPath(@"..\..\."))
-                .UseWebRoot(Path.GetFullPath(@"..\..\wwwroot"))
                 .Build();
     }
 }
